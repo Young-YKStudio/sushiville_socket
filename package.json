@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/Young-YKStudio/sushiville_socket/issues"
   },
-  "homepage": "https://github.com/Young-YKStudio/sushiville_socket#readme"
+  "homepage": "https://github.com/Young-YKStudio/sushiville_socket#readme",
+  "dependencies": {
+    "express": "^4.18.1"
+  }
 }
