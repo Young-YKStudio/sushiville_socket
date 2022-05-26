@@ -13,6 +13,8 @@ const io = socketio(server, {'pingTimeout': 7000, 'pingInterval': 3000, cors: {o
 connectDB();
 socketUtils.connection(io);
 
+app.use('/public', express.static('public'));
+
 const PORT = 4000 || process.env.PORT;
 
 server.listen(PORT, () => console.log(`Server running at ${PORT}`));
