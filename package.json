@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node index.js",
+    "dev": "nodemon index.js"
   },
   "repository": {
     "type": "git",
@@ -17,6 +18,16 @@
   },
   "homepage": "https://github.com/Young-YKStudio/sushiville_socket#readme",
   "dependencies": {
-    "express": "^4.18.1"
+    "@sendgrid/mail": "^7.7.0",
+    "dotenv": "^16.0.1",
+    "express": "^4.18.1",
+    "moment": "^2.29.3",
+    "mongodb": "^4.6.0",
+    "mongoose": "^6.3.4",
+    "mongoose-auto-increment": "^5.0.1",
+    "socket.io": "^4.5.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.16"
   }
 }
