@@ -14,6 +14,11 @@ connectDB();
 socketUtils.connection(io);
 
 app.use('/public', express.static('public'));
+app.get('/', (req, res) => {
+  res.json({
+    message: 'io server running'
+  });
+});
 
 const PORT = 4000 || process.env.PORT;
 
