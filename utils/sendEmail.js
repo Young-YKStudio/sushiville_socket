@@ -1,22 +1,28 @@
-const sgMail = require('@sendgrid/mail');
+const nodemailer = require('nodemailer');
 
-sgMail.setApiKey(process.env.EMAIL_PASSWORD)
+const transporter = nodemailer.createTransport({
+  host: 'smtp.gmail.com',
+  port: 587,
+  auth: {
+    user: 'sushivilledev@gmail.com',
+    pass: "symujamjljfakyiz"
+  },
+});
 
 const sendEmail = (options) => {
 
   const mailOptions = {
-    from: process.env.EMAIL_FROM,
+    from: 'Sushiville <service@sushivilleny.com>',
     to: options.to,
     subject: options.subject,
     html: options.text
   }
 
   try {
-    sgMail.send(mailOptions).then(() => { console.log('email sent')}).catch((err) => { console.log(err)})
+    transporter.sendMail(mailOptions).then(console.info).catch(console.catch)
   } catch (err) {
     console.log(err)
   }
-
 }
 
 module.exports = sendEmail;

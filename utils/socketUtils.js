@@ -2,6 +2,7 @@ const Order = require('../models/Order');
 const User = require('../models/User');
 const Reservation = require('../models/Reservation');
 const moment = require('moment');
+const sendEmail = require('../utils/sendEmail');
 
 exports.connection = (io) => {
 
