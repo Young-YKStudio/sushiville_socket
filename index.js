@@ -5,7 +5,6 @@ const socketio = require('socket.io');
 const cors = require('cors');
 const connectDB = require('./config/db');
 const socketUtils = require('./utils/socketUtils');
-app.use(cors());
 
 const app = express();
 const server = http.createServer(app);
