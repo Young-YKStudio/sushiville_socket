@@ -38,7 +38,7 @@ exports.connection = (io) => {
       let receivedOrder = order;
 
       const gettingDataBase = async () => {
-        await Order.find({}).populate({path: 'customer', model: 'User'}).sort({ OrderNumber: -1}).then(result => {
+        await Order.find({}).populate({path: 'customer', model: 'User'}).sort({ createdAt: -1}).then(result => {
           newOrders = result.filter(order => !order.isFinished)
           return newOrders
         })
