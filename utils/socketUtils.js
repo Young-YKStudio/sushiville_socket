@@ -13,7 +13,7 @@ exports.connection = (io) => {
     console.log('a user is connnected', socket.id)
 
     const EmitOrders = async () => {
-      await Order.find({}).populate({path: 'customer', model: 'User'}).sort({ OrderNumber: -1}).then(result => {
+      await Order.find({}).populate({path: 'customer', model: 'User'}).sort({ createdAt: -1}).then(result => {
         newOrders = result.filter(order => !order.isFinished)
         return newOrders
       })
@@ -21,7 +21,7 @@ exports.connection = (io) => {
     }
 
     const EmitReservations = async () => {
-      await Reservation.find({}).populate({path: 'customer', model: 'User'}).sort({ updatedAt: -1}).then(result => {
+      await Reservation.find({}).populate({path: 'customer', model: 'User'}).sort({ createdAt: -1}).then(result => {
         newReservations = result.filter(reservation => !reservation.isShowedUp && !reservation.isDenied)
         return newReservations
       })
@@ -272,7 +272,7 @@ exports.connection = (io) => {
     // ----------------------------------------------- receive confirmed orders
     socket.on('confirmOrder', (id) => {
       const sendNewOrder = async () => {
-        await Order.find({}).populate({path: 'customer', model: 'User'}).sort({ OrderNumber: -1}).then(orders => {
+        await Order.find({}).populate({path: 'customer', model: 'User'}).sort({ createdAt: -1}).then(orders => {
           newOrder = orders.filter(order => !order.isFinished)
           io.sockets.emit('Orders', newOrder)
         })
@@ -317,7 +317,7 @@ exports.connection = (io) => {
 
       // sendNewOrder
       const sendNewOrder = async () => {
-        await Order.find({}).populate({path: 'customer', model: 'User'}).sort({ OrderNumber: -1}).then(orders => {
+        await Order.find({}).populate({path: 'customer', model: 'User'}).sort({ createdAt: -1}).then(orders => {
           newOrder = orders.filter(order => !order.isFinished)
           io.sockets.emit('Orders', newOrder)
         })
@@ -561,7 +561,7 @@ exports.connection = (io) => {
       }
 
       const sendNewOrder = async () => {
-        await Order.find({}).populate({path: 'customer', model: 'User'}).sort({ OrderNumber: -1}).then(orders => {
+        await Order.find({}).populate({path: 'customer', model: 'User'}).sort({ createdAt: -1}).then(orders => {
           newOrder = orders.filter(order =>  !order.isFinished)
           io.sockets.emit('Orders', newOrder)
         })
@@ -594,7 +594,7 @@ exports.connection = (io) => {
       }
 
       const emitRes = async () => {
-        await Reservation.find({}).populate({path: 'customer', model: 'User'}).sort({ updatedAt: -1}).then(result => {
+        await Reservation.find({}).populate({path: 'customer', model: 'User'}).sort({ createdAt: -1}).then(result => {
           newReservations = result.filter(reservation => !reservation.isShowedUp && !reservation.isDenied)
           return newReservations
         })
@@ -842,7 +842,7 @@ exports.connection = (io) => {
       }
 
       const emitRes = async () => {
-        await Reservation.find({}).populate({path: 'customer', model: 'User'}).sort({ updatedAt: -1}).then(result => {
+        await Reservation.find({}).populate({path: 'customer', model: 'User'}).sort({ createdAt: -1}).then(result => {
           newReservations = result.filter(reservation => !reservation.isShowedUp && !reservation.isD)
           return newReservations
         })
@@ -1091,7 +1091,7 @@ exports.connection = (io) => {
       }
 
       const emitRes = async () => {
-        await Reservation.find({}).populate({path: 'customer', model: 'User'}).sort({ updatedAt: -1}).then(result => {
+        await Reservation.find({}).populate({path: 'customer', model: 'User'}).sort({ createdAt: -1}).then(result => {
           newReservations = result.filter(reservation => !reservation.isShowedUp && !reservation.isD)
           return newReservations
         })
@@ -1344,7 +1344,7 @@ exports.connection = (io) => {
       }
 
       const emitRes = async () => {
-        await Reservation.find({}).populate({path: 'customer', model: 'User'}).sort({ updatedAt: -1}).then(result => {
+        await Reservation.find({}).populate({path: 'customer', model: 'User'}).sort({ createdAt: -1}).then(result => {
           newReservations = result.filter(reservation => !reservation.isShowedUp && !reservation.isD)
           return newReservations
         })
