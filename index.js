@@ -8,7 +8,7 @@ const socketUtils = require('./utils/socketUtils');
 
 const app = express();
 const server = http.createServer(app);
-const io = socketio(server, {'pingTimeout': 7000, 'pingInterval': 3000, cors: {origin: '*', methods: ["GET", "POST"]}});
+const io = socketio(server, {'pingTimeout': 7000, 'transports': ['websocket'], 'pingInterval': 3000, cors: {origin: '*', methods: ["GET", "POST"]}});
 
 connectDB();
 socketUtils.connection(io);
