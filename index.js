@@ -7,7 +7,7 @@ const cors = require('cors');
 
 app.use(
   cors({
-    origin: ['*'],
+    origin: ['https://www.sushivilleny.com/dashboard', 'https://www.sushivilleny.com', 'https://sushivilleny.com', 'https://sushivilleny.com/dashboard', 'https://www.sushivilleny.com/order' ],
     credentials: true,
     methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
     allowedHeaders: ['Origin', 'X-Requested-With', 'Content-type', 'Accept'],
