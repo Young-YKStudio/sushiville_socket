@@ -1,9 +1,6 @@
 const mongoose = require('mongoose');
-const autoIncrement = require('mongoose-auto-increment');
 
 let connection = mongoose.createConnection(process.env.MONGODB_URI)
-
-autoIncrement.initialize(connection);
 
 const OrderSchema = new mongoose.Schema({
   orderedItems: [
@@ -99,10 +96,10 @@ const OrderSchema = new mongoose.Schema({
   grandTotal: Number,
   addOnTotal: Number,
   willReadyBy: Date,
+  OrderNumber: Number,
 }, {timestamps: true});
 
 OrderSchema.index({ updatedAt: 1 });
-OrderSchema.plugin(autoIncrement.plugin, { model: 'OrderNumber', field: 'OrderNumber', startAt: 10000});
 
 let OrderNumber = connection.model('OrderNumber', OrderSchema);
 
