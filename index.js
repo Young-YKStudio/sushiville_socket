@@ -17,7 +17,7 @@ const server = http.createServer(app);
 const connectDB = require('./config/db');
 const socketUtils = require('./utils/socketUtils');
 
-const io = new Server(server, {'pingTimeout': 7000, 'pingInterval': 3000}, {allowRequest: (req, callback) => {
+const io = new Server(server, {'pingTimeout': 7000, 'pingInterval': 3000, cors: {origin: ['https://www.sushivilleny.com/dashboard', 'https://www.sushivilleny.com', 'https://sushivilleny.com', 'https://sushivilleny.com/dashboard', 'https://www.sushivilleny.com/order' ], credentials: true}}, {allowRequest: (req, callback) => {
   const noOriginHeader = req.headers.origin === undefined;
   callback(null, noOriginHeader)
 }});
