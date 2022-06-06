@@ -17,7 +17,10 @@ const server = http.createServer(app);
 const connectDB = require('./config/db');
 const socketUtils = require('./utils/socketUtils');
 
-const io = new Server(server, {'pingTimeout': 7000, 'pingInterval': 3000, cors: {origin: '*', credentials: true}});
+const io = new Server(server, {'pingTimeout': 7000, 'pingInterval': 3000, cors: {origin: '*', credentials: true}}, {allowRequest: (req, callback) => {
+  const noOriginHeader = req.headers.origin === undefined;
+  callback(null, noOriginHeader)
+}});
 
 connectDB();
 socketUtils.connection(io);
