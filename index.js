@@ -1,6 +1,6 @@
 require('dotenv').config();
 const express = require('express');
-const http = require('http');
+const { createServer } = require('http');
 const socketio = require('socket.io');
 const cors = require('cors');
 const connectDB = require('./config/db');
@@ -13,6 +13,7 @@ const io = socketio(server, {'pingTimeout': 7000, 'pingInterval': 3000, cors: {o
 connectDB();
 socketUtils.connection(io);
 
+app.use(cors());
 app.use('/public', express.static('public'));
 app.get('/', (req, res) => {
   res.json({
