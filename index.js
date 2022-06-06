@@ -34,4 +34,8 @@ app.get('/', (req, res) => {
 
 let PORT = process.env.PORT || 4000;
 
+server.prependListener('request', (req, res) => {
+  res.setHeader('Access-Control-Allow-Origin', '*');
+})
+
 server.listen(PORT, () => console.log(`Server running at ${PORT}`));
