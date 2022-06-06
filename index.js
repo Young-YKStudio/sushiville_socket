@@ -1,17 +1,23 @@
 require('dotenv').config();
 const express = require('express');
-const { createServer } = require('http');
-const { server } = require('socket.io');
+const http = require('http');
+const { Server } = require('socket.io');
+const app = express();
 const cors = require('cors');
 
-const app = express();
-const httpServer = createServer(app);
+app.use(
+  cors({
+    origin: ['*'],
+    credentials: true,
+    methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
+    allowedHeaders: ['Origin', 'X-Requested-With', 'Content-type', 'Accept'],
+  })
+)
+const server = http.createServer(app);
 const connectDB = require('./config/db');
 const socketUtils = require('./utils/socketUtils');
 
-app.use(cors());
-
-const io = new Server(httpServer, {'pingTimeout': 7000, 'pingInterval': 3000, cors: {origin: '*', methods: ["GET", "POST"]}});
+const io = new Server(server, {'pingTimeout': 7000, 'pingInterval': 3000, cors: {origin: '*', credentials: true}});
 
 connectDB();
 socketUtils.connection(io);
