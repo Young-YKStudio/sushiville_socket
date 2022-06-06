@@ -5,19 +5,12 @@ const { Server } = require('socket.io');
 const app = express();
 const cors = require('cors');
 
-app.use(
-  cors({
-    origin: ['https://www.sushivilleny.com/dashboard', 'https://www.sushivilleny.com', 'https://sushivilleny.com', 'https://sushivilleny.com/dashboard', 'https://www.sushivilleny.com/order' ],
-    credentials: true,
-    methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
-    allowedHeaders: ['Origin', 'X-Requested-With', 'Content-type', 'Accept'],
-  })
-)
+app.use(cors())
 const server = http.createServer(app);
 const connectDB = require('./config/db');
 const socketUtils = require('./utils/socketUtils');
 
-const io = new Server(server, {'pingTimeout': 7000, 'pingInterval': 3000, cors: {origin: ['https://www.sushivilleny.com/dashboard', 'https://www.sushivilleny.com', 'https://sushivilleny.com', 'https://sushivilleny.com/dashboard', 'https://www.sushivilleny.com/order' ], credentials: true}}, {allowRequest: (req, callback) => {
+const io = new Server(server, {'pingTimeout': 7000, 'pingInterval': 3000, cors: {origin: ['https://www.sushivilleny.com/dashboard', 'https://www.sushivilleny.com', 'https://sushivilleny.com', 'https://sushivilleny.com/dashboard', 'https://www.sushivilleny.com/order' ], methods: ["GET", "POST"], credentials: true}, allowedHeaders: ['Origin', 'X-Requested-With', 'Content-type', 'Accept']}, {allowRequest: (req, callback) => {
   const noOriginHeader = req.headers.origin === undefined;
   callback(null, noOriginHeader)
 }});
