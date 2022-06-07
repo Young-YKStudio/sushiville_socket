@@ -11,9 +11,9 @@ const connectDB = require('./config/db');
 const socketUtils = require('./utils/socketUtils');
 
 const io = new Server(server, {'pingTimeout': 7000, 'pingInterval': 3000}, {cors: {
-  origin: '*', 
+  origin: ['http://www.sushivilleny.com/dashboard', 'http://www.sushivilleny.com', 'http://sushivilleny.com', 'http://sushivilleny.com/dashboard', 'http://www.sushivilleny.com/order' ], 
   methods: ["GET", "POST"], 
-  allowedHeaders: ['Origin', 'X-Requested-With', 'Content-type', 'Accept']}});
+  allowedHeaders: ['Origin', 'X-Requested-With', 'Content-type', 'Accept'], credentials: true}});
 
 connectDB();
 socketUtils.connection(io);
