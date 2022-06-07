@@ -380,7 +380,7 @@ exports.connection = (io) => {
               <div style="margin-top: 1em;">
                 <img
                   style="max-width: 150px;"
-                  src="http://localhost:8000/public/images/logo_sushivill.png"
+                  src="https://sushiville-back.herokuapp.com/public/images/logo_sushivill.png"
                 />
               </div>
               <h1
@@ -658,7 +658,7 @@ exports.connection = (io) => {
               <div style="margin-top: 1em;">
                 <img
                   style="max-width: 150px;"
-                  src="http://localhost:8000/public/images/logo_sushivill.png"
+                  src="https://sushiville-back.herokuapp.com/public/images/logo_sushivill.png"
                 />
               </div>
               <h1
@@ -905,7 +905,7 @@ exports.connection = (io) => {
               <div style="margin-top: 1em;">
                 <img
                   style="max-width: 150px;"
-                  src="http://localhost:8000/public/images/logo_sushivill.png"
+                  src="https://sushiville-back.herokuapp.com/public/images/logo_sushivill.png"
                 />
               </div>
               <h1
@@ -1154,7 +1154,7 @@ exports.connection = (io) => {
               <div style="margin-top: 1em;">
                 <img
                   style="max-width: 150px;"
-                  src="http://localhost:8000/public/images/logo_sushivill.png"
+                  src="https://sushiville-back.herokuapp.com/public/images/logo_sushivill.png"
                 />
               </div>
               <h1
